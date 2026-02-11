@@ -16,28 +16,26 @@ We are using a sample size of 37463 messages, received via [Discord Data package
 <img width="313" height="21" alt="image" src="https://github.com/user-attachments/assets/a93d07ef-683a-42da-8aa8-e2722eb0f5c9" />
 
 
-# Progress
+## Progress
 We are training the mini me, hopefully he will learn well. 
 
 <img width="818" height="107" alt="image" src="https://github.com/user-attachments/assets/6b827cab-7eb8-4f7e-8df7-268d26dbc75e" />
 
+## Reference
 #### train.py
-This script fine‑tunes the base model on the text file in data/. It:
+This script trains the base model on the text file in data/. It:
 - Loads the dataset and tokenizes it.
 - Loads the Mistral‑7B model.
 - Wraps the model with LoRA adapters so only a small number of parameters are trained.
 - Runs training with the Hugging Face Trainer.
 - Saves the resulting LoRA adapter files into model/lora/.
+  
 The output is a small set of files (adapter_config.json, adapter_model.bin) that represent the behavior.
 
 #### gen.py
-This script generates text using the fine‑tuned model. It:
-- Loads the base Mistral‑7B model in 4‑bit mode.
-- Loads the LoRA adapter produced by training.
+This script generates text using the model. It:
+- Loads the base Mistral‑7B model.
+- Loads the Adapters produced by training.
 - Builds a text‑generation pipeline.
-- Accepts a prompt and produces new text that reflects the style and patterns learned from the dataset.
-This is the script you run after training to test or use your model.
-
-
-
+- Accepts a prompt and produces new text as the model we trained.
 
